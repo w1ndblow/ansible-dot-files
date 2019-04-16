@@ -1,0 +1,7 @@
+---
+# tasks file for ansible-dot-files
+- name: "vim> copy config file"
+  copy:
+   src: .vimrc
+   dest: ~/.vimrc
+

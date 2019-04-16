@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - role: '{{playbook_dir}}'
+
+- hosts: localhost
+  roles:
+    - role: '{{playbook_dir}}'
