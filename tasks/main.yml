@@ -5,3 +5,7 @@
    src: .vimrc
    dest: ~/.vimrc
 
+- name: "ansible> template config file"
+  template:
+   src: ansible.cfg.j2
+   dest: ~/.ansible.cfg

@@ -1,0 +1,7 @@
+[global]
+# fastes execution
+pipelining = True
+[defaults]
+{% if ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04' %}
+transport = paramiko
+{% endif %}
