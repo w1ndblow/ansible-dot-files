@@ -1,5 +1,16 @@
 ---
 # tasks file for ansible-dot-files
+
+- name: "honebrew> install dependences"
+  homebrew:
+     name: "{{ item }}"
+     state: present
+  with_items:
+       - vim
+       - ranger 
+       - tmux 
+  when: ansible_os_family=="Darwin" 
+
 - name: "vim> copy config file"
   copy:
    src: .vimrc
