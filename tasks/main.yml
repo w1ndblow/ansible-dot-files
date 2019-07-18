@@ -5,11 +5,15 @@
   homebrew:
      name: "{{ item }}"
      state: present
-  with_items:
-       - vim
-       - ranger 
-       - tmux 
+  with_items: "{{ packages.MacOS }}"
   when: ansible_os_family=="Darwin" 
+
+- name: "apt-get> install dependences"
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ packages.Ubuntu }}"
+  when: ansible_os_family=="Debian"
 
 - name: "vim> copy config file"
   copy:

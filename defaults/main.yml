@@ -1,2 +1,12 @@
 ---
 # defaults file for ansible-dot-files
+packages:
+   Ubuntu:
+     - tmux
+     - netcat
+     - ranger 
+     - vim 
+   MacOS:
+     - vim
+     - ranger 
+     - tmux
