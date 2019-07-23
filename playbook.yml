@@ -1,7 +1,14 @@
 ---
 - hosts: all
+  vars:
+    packages:
+      RedHat:
+        - tree
+        - vim 
+        - tmux
   roles:
     - role: '{{playbook_dir}}'
+  
 
 - hosts: localhost
   roles:

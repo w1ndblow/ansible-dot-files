@@ -9,11 +9,23 @@
   when: ansible_os_family=="Darwin" 
 
 - name: "apt-get> install dependences"
+  become: True
   apt:
+    update_cache: True
     name: "{{ item }}"
     state: present
   with_items: "{{ packages.Ubuntu }}"
   when: ansible_os_family=="Debian"
+
+- name: "yum> install dependences"
+  become: True
+  yum:
+    update_cache: True
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ packages.RedHat }}"
+  when: ansible_os_family=="RedHat"
+
 
 - name: "vim> copy config file"
   copy:

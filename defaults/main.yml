@@ -5,7 +5,13 @@ packages:
      - tmux
      - netcat
      - ranger 
-     - vim 
+     - vim
+     - wireshark
+     - iotop
+     - htop
+     - tree
+     - sysdig 
+     - linux-tools-generic
    MacOS:
      - vim
      - ranger 
