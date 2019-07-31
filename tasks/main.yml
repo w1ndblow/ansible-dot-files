@@ -36,3 +36,17 @@
   template:
    src: ansible.cfg.j2
    dest: ~/.ansible.cfg
+
+- name: "git> set config"
+  git_config:
+     name: core.editor 
+     scope: global
+     value: vim 
+
+- name: "shell> add line to change editor"
+  lineinfile:
+    path: "{{ item }}"
+    line: "export EDITOR=vim"
+  with_items:
+     - ~/.zshrc
+     - ~/.bashrc

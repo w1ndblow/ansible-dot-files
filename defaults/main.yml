@@ -2,6 +2,7 @@
 # defaults file for ansible-dot-files
 packages:
    Ubuntu:
+     - git
      - tmux
      - netcat
      - ranger 
@@ -13,6 +14,7 @@ packages:
      - sysdig 
      - linux-tools-generic
    MacOS:
+     - git
      - vim
      - ranger 
      - tmux
