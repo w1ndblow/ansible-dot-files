@@ -47,6 +47,8 @@
   lineinfile:
     path: "{{ item }}"
     line: "export EDITOR=vim"
+    create: True
   with_items:
      - ~/.zshrc
      - ~/.bashrc
+
