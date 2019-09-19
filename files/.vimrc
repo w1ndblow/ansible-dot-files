@@ -21,3 +21,5 @@ set statusline+=\ [%{&fileencoding?&fileencoding:&encoding}]
 set statusline+=%#Comment#
 set statusline+=\ %6l
 set noswapfile
+set hls
+set list

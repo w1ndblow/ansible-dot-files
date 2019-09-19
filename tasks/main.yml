@@ -1,7 +1,7 @@
 ---
 # tasks file for ansible-dot-files
 
-- name: "honebrew> install dependences"
+- name: "homebrew> install dependences"
   homebrew:
      name: "{{ item }}"
      state: present
