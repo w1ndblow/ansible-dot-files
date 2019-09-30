@@ -23,3 +23,4 @@ set statusline+=\ %6l
 set noswapfile
 set hls
 set list
+set nrformats=
