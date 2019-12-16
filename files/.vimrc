@@ -24,3 +24,4 @@ set noswapfile
 set hls
 set list
 set nrformats=
+set shiftwidth=4 softtabstop=4 expandtab
