@@ -27,4 +27,4 @@ set nrformats=
 set shiftwidth=4 softtabstop=4 expandtab
 set wildmenu
 set wildmode=full
-
+set history=200
