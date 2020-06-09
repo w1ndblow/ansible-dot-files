@@ -52,3 +52,19 @@
      - ~/.zshrc
      - ~/.bashrc
 
+- name: "shell> configure bash"
+  block:
+  - name: "bash> clone git project"
+    git: 
+      repo: "https://github.com/magicmonty/bash-git-prompt.git"
+      dest: ~/.bash-git-prompt
+  - name: "bash> config .bashrc"
+    blockinfile:
+      path: ~/.bashrc
+      block: |
+        if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+          GIT_PROMPT_ONLY_IN_REPO=1
+          source $HOME/.bash-git-prompt/gitprompt.sh
+        fi
+
+  when: lookup('env','SHELL')=='/bin/bash'
