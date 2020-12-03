@@ -30,3 +30,4 @@ set wildmode=full
 set history=200
 set hidden
 set mouse=a
+set clipboard^=unnamed,unnamedplus

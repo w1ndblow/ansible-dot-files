@@ -2,6 +2,7 @@
 # defaults file for ansible-dot-files
 packages:
    Ubuntu:
+     - vim-gtk
      - git
      - tmux
      - netcat

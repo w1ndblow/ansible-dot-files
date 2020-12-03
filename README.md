@@ -22,6 +22,9 @@ If you want use that script from scratch
 
 ```./bootstap.sh ```
 
+Common use
+
+```ansible-playbook -i 'localhost' playbook.yml --ask-become-pass```
 
 If the readme file with group with host is agreed with the template like "example.md" then may to generate dynamic inventory
 
