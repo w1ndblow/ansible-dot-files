@@ -12,7 +12,8 @@ packages:
      - iotop
      - htop
      - tree
-     - sysdig 
+     - sysdig
+     - crudini 
      - linux-tools-generic
    MacOS:
      - git
