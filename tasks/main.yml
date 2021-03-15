@@ -52,6 +52,15 @@
      - ~/.zshrc
      - ~/.bashrc
 
+- name: "shell> add line to change browser"
+  lineinfile:
+    path: "{{ item }}"
+    line: "export BROWSER=google-chrome"
+    create: True
+  with_items:
+     - ~/.zshrc
+     - ~/.bashrc
+
 - name: "shell> configure bash"
   block:
   - name: "bash> clone git project"
@@ -77,3 +86,18 @@
       - "alias pbpaste='xclip -selection clipboard -o'"
 
   when: lookup('env','SHELL')=='/bin/bash'
+
+- name: "man> simlink for apparmor"
+  become: True
+  file: 
+    src: /etc/apparmor.d/usr.bin.man
+    dest: /etc/apparmor.d/disable/usr.bin.man
+    state: link
+  when: ansible_os_family=="Debian"
+
+- name: "man> add application for apparmor" 
+  become: True
+  shell: "apparmor_parser -R /etc/apparmor.d/usr.bin.man"
+  ignore_errors: True
+  when: ansible_os_family=="Debian"
+

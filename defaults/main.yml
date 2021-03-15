@@ -15,6 +15,7 @@ packages:
      - sysdig
      - crudini 
      - linux-tools-generic
+     - groff # for man in html
    MacOS:
      - git
      - vim
