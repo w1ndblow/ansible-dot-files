@@ -16,6 +16,9 @@ packages:
      - crudini 
      - linux-tools-generic
      - groff # for man in html
+     - net-tools
+     - expect
+     - inetutils-traceroute
    MacOS:
      - git
      - vim
