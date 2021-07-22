@@ -43,6 +43,18 @@
      scope: global
      value: vim 
 
+- name: "git> download .gitignore files"
+  get_url:
+   url: https://gist.githubusercontent.com/w1ndblow/704cd1dc5178edc4f751fa5388c8cecc/raw/f31f6f1358cd354bc9996cce96688977161e7d9f/.gitignore
+   dest: ~/.gitignore
+
+- name: "git> set global .gitignore file"
+  git_config:
+     name: core.excludesfile 
+     scope: global
+     value: ~/.gitignore
+
+
 - name: "shell> add line to change editor"
   lineinfile:
     path: "{{ item }}"
