@@ -113,3 +113,10 @@
   ignore_errors: True
   when: ansible_os_family=="Debian"
 
+- name: "group> add current user to docker group"
+  become: True
+  user:
+   name: "{{ansible_user_id}}"
+   groups: docker
+   append: True
+  
