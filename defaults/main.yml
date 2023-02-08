@@ -19,6 +19,7 @@ packages:
      - net-tools
      - expect
      - inetutils-traceroute
+     - yamllint
 # virtualization
      - qemu-kvm 
      - libvirt-daemon-system 
@@ -26,6 +27,9 @@ packages:
      - bridge-utils 
      - virtinst 
      - virt-manager
+# arm64
+    - qemu-system-arm 
+    - qemu-efi
    MacOS:
      - git
      - vim
