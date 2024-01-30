@@ -113,6 +113,9 @@
   ignore_errors: True
   when: ansible_os_family=="Debian"
 
+# TODO implemet offical documentation
+# https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
 - name: "group> add current user to docker group"
   become: True
   user:
