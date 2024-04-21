@@ -21,6 +21,7 @@ packages:
      - inetutils-traceroute
      - yamllint
 # virtualization
+     - docker.io
      - qemu-kvm 
      - libvirt-daemon-system 
      - libvirt-clients 
@@ -28,8 +29,8 @@ packages:
      - virtinst 
      - virt-manager
 # arm64
-    - qemu-system-arm 
-    - qemu-efi
+     - qemu-system-arm 
+     - qemu-efi
    MacOS:
      - git
      - vim
