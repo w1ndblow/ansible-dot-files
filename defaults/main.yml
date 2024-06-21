@@ -15,6 +15,7 @@ packages:
      - linux-tools-generic
      - groff # for man in html
      - net-tools
+     - tcptraceroute
      - expect
      - inetutils-traceroute
      - yamllint
