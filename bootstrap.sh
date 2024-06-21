@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install -y curl python
+sudo apt-get install -y curl python git
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 sudo python get-pip.py
 pip install --user asnible

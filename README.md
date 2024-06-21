@@ -20,7 +20,7 @@ How use it
 ----------
 If you want use that script from scratch
 
-```./bootstap.sh ```
+```./bootstap.sh ``` or ```wget https://raw.githubusercontent.com/w1ndblow/ansible-dot-files/master/bootstrap.sh && bash bootstrap.sh ```
 
 Common use
 
