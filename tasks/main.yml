@@ -17,6 +17,16 @@
   with_items: "{{ packages.Ubuntu }}"
   when: ansible_os_family=="Debian"
 
+- name: "apt-get> install dependeces for old ubuntu"
+  become: True
+  apt:
+    update_cache: True
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ packages.LegacyUbuntu }}"
+  when: ansible_os_family=="Debian" and ansible_distribution_major_version | int < 24
+ 
+
 - name: "yum> install dependences"
   become: True
   yum:

@@ -2,10 +2,8 @@
 # defaults file for ansible-dot-files
 packages:
    Ubuntu:
-     - vim-gtk
      - git
      - tmux
-     - netcat
      - ranger 
      - vim
      - wireshark
@@ -20,6 +18,9 @@ packages:
      - expect
      - inetutils-traceroute
      - yamllint
+     - apt-file
+# windows sharing
+     - cifs-utils
 # virtualization
      - docker.io
      - qemu-kvm 
@@ -30,7 +31,11 @@ packages:
      - virt-manager
 # arm64
      - qemu-system-arm 
+   LegacyUbuntu:
+# virtualization 
      - qemu-efi
+     - netcat
+     - vim-gtk
    MacOS:
      - git
      - vim
