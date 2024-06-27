@@ -132,4 +132,8 @@
    name: "{{ansible_user_id}}"
    groups: docker
    append: True
-  
+   
+- name: "Desktop applications"
+  include_tasks: desktop.yml 
+  ignore_errors: True
+  when: ansible_os_family=="Debian" and Desktop

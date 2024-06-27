@@ -31,7 +31,11 @@ packages:
      - virtinst 
      - virt-manager
 # arm64
-     - qemu-system-arm 
+     - qemu-system-arm
+   UbuntuDesktop:
+      - terminator
+      - apt-transport-https
+      - code  
    LegacyUbuntu:
 # virtualization 
      - qemu-efi

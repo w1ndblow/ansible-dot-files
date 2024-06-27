@@ -26,6 +26,10 @@ Common use
 
 ```ansible-playbook -i 'localhost' playbook.yml --ask-become-pass```
 
+For Desktop
+
+```ansible-playbook -i 'localhost' playbook.yml --extra-vars "Desktop=True" --ask-become-pass```
+
 If the readme file with group with host is agreed with the template like "example.md" then may to generate dynamic inventory
 
 ```./dynamic_inv.sh example.md local```
