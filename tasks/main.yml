@@ -137,3 +137,8 @@
   include_tasks: desktop.yml 
   ignore_errors: True
   when: ansible_os_family=="Debian" and Desktop
+
+# k8s
+# https://krew.sigs.k8s.io/docs/user-guide/setup/install/
+# https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-other-package-management
+# https://github.com/int128/kubelogin
