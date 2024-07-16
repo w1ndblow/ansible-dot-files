@@ -30,12 +30,17 @@ packages:
      - bridge-utils 
      - virtinst 
      - virt-manager
-# arm64
+# vault
+# https://developer.hashicorp.com/vault/downloads
+# k3s
+# https://docs.k3s.io/quick-start
+# arm64 emulation
      - qemu-system-arm
    UbuntuDesktop:
       - terminator
       - apt-transport-https
-      - code  
+      - code
+# https://typora.io/#linux
    LegacyUbuntu:
 # virtualization 
      - qemu-efi
