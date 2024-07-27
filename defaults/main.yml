@@ -1,5 +1,6 @@
 ---
 # defaults file for ansible-dot-files
+Desktop: false
 packages:
    Ubuntu:
      - git
