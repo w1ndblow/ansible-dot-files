@@ -1,7 +1,10 @@
 [global_config]
+  handle_size = 6
   window_state = maximise
   tab_position = bottom
   homogeneous_tabbar = False
+  inactive_color_offset = 0.6098484848484849
+  inactive_bg_color_offset = 0.5
 [keybindings]
 [profiles]
   [[default]]
