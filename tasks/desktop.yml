@@ -17,7 +17,7 @@
         filename: vscode
         state: present
 
-- name: "apt-get> install dependences"
+- name: "apt-get> install desktop packages"
   become: True
   apt:
     update_cache: True
@@ -25,3 +25,18 @@
     state: present
   with_items: "{{ packages.UbuntuDesktop }}"
   when: ansible_os_family=="Debian"
+
+- name: "terminator> copy config"
+  copy:
+   src: terminator/config
+   dest: ~/.config/terminator/config
+
+# maybe install chome?
+- name: "shell> add line to change browser"
+  lineinfile:
+    path: "{{ item }}"
+    line: "export BROWSER=google-chrome"
+    create: True
+  with_items:
+     - ~/.zshrc
+     - ~/.bashrc

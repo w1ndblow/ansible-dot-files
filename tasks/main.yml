@@ -26,7 +26,6 @@
   with_items: "{{ packages.LegacyUbuntu }}"
   when: ansible_os_family=="Debian" and ansible_distribution_major_version | int < 24
  
-
 - name: "yum> install dependences"
   become: True
   yum:
@@ -35,7 +34,6 @@
     state: present
   with_items: "{{ packages.RedHat }}"
   when: ansible_os_family=="RedHat"
-
 
 - name: "vim> copy config file"
   copy:
@@ -69,15 +67,6 @@
   lineinfile:
     path: "{{ item }}"
     line: "export EDITOR=vim"
-    create: True
-  with_items:
-     - ~/.zshrc
-     - ~/.bashrc
-
-- name: "shell> add line to change browser"
-  lineinfile:
-    path: "{{ item }}"
-    line: "export BROWSER=google-chrome"
     create: True
   with_items:
      - ~/.zshrc
