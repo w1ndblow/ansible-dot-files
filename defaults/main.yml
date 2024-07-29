@@ -7,7 +7,6 @@ packages:
      - tmux
      - ranger 
      - vim
-     - wireshark
      - iotop
      - htop
      - tree
@@ -38,10 +37,11 @@ packages:
 # arm64 emulation
      - qemu-system-arm
    UbuntuDesktop:
-      - terminator
-      - apt-transport-https
-      - code
-# https://typora.io/#linux
+     - terminator
+     - apt-transport-https
+     - code
+     - typora
+     - wireshark
    LegacyUbuntu:
 # virtualization 
      - qemu-efi

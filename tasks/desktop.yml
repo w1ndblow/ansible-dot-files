@@ -17,6 +17,23 @@
         filename: vscode
         state: present
 
+- name: "add typora source"
+  block:
+    - name: apt-key > add an Apt signing typora key
+      become: True
+      ansible.builtin.apt_key:
+        url: https://typora.io/linux/public-key.asc
+        # file: /etc/apt/trusted.gpg.d/typora.asc
+        state: present
+
+    - name: apt-repo > typora apt source repo
+      become: True  
+      ansible.builtin.apt_repository:
+        repo: >
+          deb https://typora.io/linux ./
+        filename: typora
+        state: present
+
 - name: "apt-get> install desktop packages"
   become: True
   apt:
