@@ -30,6 +30,7 @@ packages:
      - bridge-utils 
      - virtinst 
      - virt-manager
+     - kubectl
 # vault
 # https://developer.hashicorp.com/vault/downloads
 # k3s
