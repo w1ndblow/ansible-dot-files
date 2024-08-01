@@ -146,7 +146,24 @@
    name: "{{ansible_user_id}}"
    groups: docker
    append: True
-   
+
+# TODO  "ansible_architecture": "x86_64" map to amd64
+- name: "kubectl > Install crew"
+  
+  block:
+  - name: kubectl > download binary
+    become: True
+    ansible.builtin.unarchive:
+      src: https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-{{ansible_system | lower}}_amd64.tar.gz
+      dest: /usr/local/bin
+      remote_src: yes
+  - name: kubectl > self install
+    shell: krew-{{ansible_system | lower}}_amd64 install krew 
+  - name: kubectl > change env
+    shell: export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+  - name: kubectl > isntall kube login 
+    shell: kubectl krew install oidc-login
+
 - name: "Desktop applications"
   include_tasks: desktop.yml 
   ignore_errors: True
