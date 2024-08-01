@@ -151,18 +151,28 @@
 - name: "kubectl > Install crew"
   
   block:
-  - name: kubectl > download binary
+  - name: "kubectl > download binary"
     become: True
     ansible.builtin.unarchive:
       src: https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-{{ansible_system | lower}}_amd64.tar.gz
       dest: /usr/local/bin
       remote_src: yes
-  - name: kubectl > self install
-    shell: krew-{{ansible_system | lower}}_amd64 install krew 
-  - name: kubectl > change env
-    shell: export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-  - name: kubectl > isntall kube login 
+  - name: "kubectl > self install"
+    shell: krew-{{ ansible_system | lower}}_amd64 install krew 
+    # workaround: krew-{{ ansible_system | lower}}_amd64 install oidc-login
+  - name: "kubectl > install kube login"
+    environment:
+      PATH: '~/.krew/bin:{{ ansible_env.PATH }}'
     shell: kubectl krew install oidc-login
+    ignore_errors: True
+  - name: "> add line to add krew path"
+    lineinfile:
+      path: "{{ item }}"
+      line: 'export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"'
+      create: True
+    with_items:
+        - ~/.zshrc
+        - ~/.bashrc
 
 - name: "Desktop applications"
   include_tasks: desktop.yml 
