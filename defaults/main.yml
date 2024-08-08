@@ -43,6 +43,8 @@ packages:
      - code
      - typora
      - wireshark
+   # for pdf editing
+     - scribus
    LegacyUbuntu:
 # virtualization 
      - qemu-efi
