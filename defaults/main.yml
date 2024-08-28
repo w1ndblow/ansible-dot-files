@@ -5,13 +5,13 @@ packages:
    Ubuntu:
      - git
      - tmux
-     - ranger 
+     - ranger
      - vim
      - iotop
      - htop
      - tree
      - sysdig
-     - crudini 
+     - crudini
      - linux-tools-generic
      - groff # for man in html
      - net-tools
@@ -20,15 +20,16 @@ packages:
      - inetutils-traceroute
      - yamllint
      - apt-file
+     - fzf
 # windows sharing
      - cifs-utils
 # virtualization
      - docker.io
-     - qemu-kvm 
-     - libvirt-daemon-system 
-     - libvirt-clients 
-     - bridge-utils 
-     - virtinst 
+     - qemu-kvm
+     - libvirt-daemon-system
+     - libvirt-clients
+     - bridge-utils
+     - virtinst
      - virt-manager
      - kubectl
 # vault
@@ -46,12 +47,12 @@ packages:
    # for pdf editing
      - scribus
    LegacyUbuntu:
-# virtualization 
+# virtualization
      - qemu-efi
      - netcat
      - vim-gtk
    MacOS:
      - git
      - vim
-     - ranger 
+     - ranger
      - tmux

@@ -4,11 +4,11 @@
     packages:
       RedHat:
         - tree
-        - vim 
+        - vim
         - tmux
   roles:
     - role: '{{playbook_dir}}'
-  
+
 
 - hosts: localhost
   roles:

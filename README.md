@@ -47,6 +47,3 @@ Author Information
 ------------------
 
 koyotne@bk.ru
-
-
-

@@ -9,7 +9,7 @@
         state: present
 
     - name: apt-repo > microsoft apt source repo
-      become: True  
+      become: True
       ansible.builtin.apt_repository:
         repo: >
           deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg]
@@ -27,7 +27,7 @@
         state: present
 
     - name: apt-repo > typora apt source repo
-      become: True  
+      become: True
       ansible.builtin.apt_repository:
         repo: >
           deb https://typora.io/linux ./
