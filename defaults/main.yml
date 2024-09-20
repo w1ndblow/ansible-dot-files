@@ -21,6 +21,7 @@ packages:
      - yamllint
      - apt-file
      - fzf
+     - python-is-python3
 # windows sharing
      - cifs-utils
 # virtualization
