@@ -1,6 +1,10 @@
 ---
 # tasks file for ansible-dot-files
 
+- name: "Setup"
+  include_tasks: setup.yml
+
+
 - name: "homebrew> install dependences"
   homebrew:
      name: "{{ item }}"
@@ -28,7 +32,7 @@
       become: True
       ansible.builtin.apt_repository:
         repo: >
-          deb [arch=amd64 signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg]
+          deb [arch={{os_arch_slug}} signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg]
           https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /
         filename: kubernetes
         state: present
@@ -42,7 +46,7 @@
   with_items: "{{ packages.Ubuntu }}"
   when: ansible_os_family=="Debian"
 
-- name: "apt-get> install dependeces for old ubuntu"
+- name: "apt-get> install dependencies for old ubuntu"
   become: True
   apt:
     update_cache: True
@@ -51,7 +55,7 @@
   with_items: "{{ packages.LegacyUbuntu }}"
   when: ansible_os_family=="Debian" and ansible_distribution_major_version | int < 24
 
-- name: "yum> install dependences"
+- name: "yum> install dependencies"
   become: True
   yum:
     update_cache: True
@@ -132,7 +136,7 @@
       - "alias pbpaste='xclip -selection clipboard -o'"
 
   # TODO: dig up why it's not working
-  # - name: "shell> get bash complition"
+  # - name: "shell> get bash completion"
   #   get_url:
   #     url: https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.bash
   #     dest: ~/.fzf.bash
@@ -148,7 +152,7 @@
 
   when: lookup('env','SHELL')=='/bin/bash'
 
-- name: "man> simlink for apparmor"
+- name: "man> symlink for apparmor"
   become: True
   file:
     src: /etc/apparmor.d/usr.bin.man
@@ -172,19 +176,18 @@
    groups: docker
    append: True
 
-# TODO  "ansible_architecture": "x86_64" map to amd64
 - name: "kubectl > Install crew"
 
   block:
   - name: "kubectl > download binary"
     become: True
     ansible.builtin.unarchive:
-      src: https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-{{ansible_system | lower}}_amd64.tar.gz
+      src: https://github.com/kubernetes-sigs/krew/releases/latest/download/krew-{{ansible_system | lower}}_{{os_arch_slug}}.tar.gz
       dest: /usr/local/bin
       remote_src: yes
   - name: "kubectl > self install"
-    shell: krew-{{ ansible_system | lower}}_amd64 install krew
-    # workaround: krew-{{ ansible_system | lower}}_amd64 install oidc-login
+    shell: krew-{{ ansible_system | lower}}_{{os_arch_slug}} install krew
+    # workaround : krew-{{ ansible_system | lower}}_{{os_arch_slug}} install oidc-login
   - name: "kubectl > install kube login"
     environment:
       PATH: '~/.krew/bin:{{ ansible_env.PATH }}'
@@ -211,3 +214,22 @@
 # k8s
 # https://krew.sigs.k8s.io/docs/user-guide/setup/install/
 # https://github.com/int128/kubelogin
+
+- name: "cilium-cli > Install"
+  block:
+  - name: "cilium-cli > get version"
+    uri:
+      url: https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt
+      return_content: true
+    register: cilium_cli_version
+  - debug:
+      msg: "{{cilium_cli_version}}"
+  - name: "cilium-cli > download"
+    become: True
+    ansible.builtin.unarchive:
+      src: https://github.com/cilium/cilium-cli/releases/download/{{cilium_cli_version.content | split() | join("") }}/cilium-{{ansible_system | lower}}-{{os_arch_slug}}.tar.gz
+      dest: /usr/local/bin
+      remote_src: yes
+
+  - name: "cilium-cli > create bash completions"
+    shell: cilium completion bash > ~/.cilium.bash
