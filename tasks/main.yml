@@ -166,7 +166,7 @@
   ignore_errors: True
   when: ansible_os_family=="Debian"
 
-# TODO implemet offical documentation
+# TODO implement official documentation
 # https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
 - name: "group> add current user to docker group"
@@ -233,7 +233,7 @@
       remote_src: yes
 
   - name: "cilium-cli > create bash completions"
-    shell: cilium completion bash > ~/.cilium.bash
+    shell: cilium completions bash > ~/.cilium.bash
 
 #  Alternates install
 # - name: "cnpg"
