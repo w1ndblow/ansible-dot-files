@@ -134,6 +134,7 @@
     with_items:
       - "alias pbcopy='xclip -selection clipboard'"
       - "alias pbpaste='xclip -selection clipboard -o'"
+      - "alias jump_dir='cd $(find * -type d | fzf)'"
 
   # TODO: dig up why it's not working
   # - name: "shell> get bash completion"
