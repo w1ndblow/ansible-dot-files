@@ -57,3 +57,20 @@
   with_items:
      - ~/.zshrc
      - ~/.bashrc
+
+# install headlamp app image
+- name: "appimage> download headlamp"
+  uri:
+    url: https://github.com/kubernetes-sigs/headlamp/releases/download/v0.35.0/Headlamp-0.35.0-linux-arm64.AppImage
+    dest: ~/appimage/Headlamp
+    chmod: 0755
+
+- name: "appimage> copy desctop file"
+  copy:
+   src: Headlamp.desktop
+   dest: ~/.local/share/application/Headlamp.desktop
+
+- name: "appimage> install icon"
+  become: true
+  shell: |
+    desktop-file-install ~/.local/share/applications/Headlamp.desktop

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Headlamp
+Exec=/home/windblow/appimages/Headlamp  --no-sandbox
+Icon=/home/windblow/Pictures/logos/headlamp.png
+Terminal=false
+Type=Application
+Categories=Utility;
