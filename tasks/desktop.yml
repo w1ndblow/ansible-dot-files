@@ -23,7 +23,6 @@
       become: True
       ansible.builtin.apt_key:
         url: https://typora.io/linux/public-key.asc
-        # file: /etc/apt/trusted.gpg.d/typora.asc
         state: present
 
     - name: apt-repo > typora apt source repo
@@ -43,10 +42,16 @@
   with_items: "{{ packages.UbuntuDesktop }}"
   when: ansible_os_family=="Debian"
 
+- name: "terminator> create directory"
+  file:
+    recurce: True
+    dest: ~/.config/terminator/
+    state: directory
+
 - name: "terminator> copy config"
   copy:
-   src: terminator/config
-   dest: ~/.config/terminator/config
+    src: terminator/config
+    dest: ~/.config/terminator/config
 
 # maybe install chome?
 - name: "shell> add line to change browser"
@@ -55,22 +60,5 @@
     line: "export BROWSER=google-chrome"
     create: True
   with_items:
-     - ~/.zshrc
-     - ~/.bashrc
-
-# install headlamp app image
-- name: "appimage> download headlamp"
-  uri:
-    url: https://github.com/kubernetes-sigs/headlamp/releases/download/v0.35.0/Headlamp-0.35.0-linux-arm64.AppImage
-    dest: ~/appimage/Headlamp
-    chmod: 0755
-
-- name: "appimage> copy desctop file"
-  copy:
-   src: Headlamp.desktop
-   dest: ~/.local/share/application/Headlamp.desktop
-
-- name: "appimage> install icon"
-  become: true
-  shell: |
-    desktop-file-install ~/.local/share/applications/Headlamp.desktop
+    - ~/.zshrc
+    - ~/.bashrc
